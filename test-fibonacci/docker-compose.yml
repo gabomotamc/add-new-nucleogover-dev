@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  apache-fibonacci:
+    container_name: php-apache
+    build:
+        context: ./php
+        dockerfile: Dockerfile
+    restart: always
+    environment:
+      PHP_EXTENSION_GD: 1
+      PHP_EXTENSION_CURL: 1
+      PHP_EXTENSION_XDEBUG: 1
+      PHP_INI_XDEBUG__REMOTE_AUTOSTART: 1
+      APACHE_DOCUMENT_ROOT: /var/www/html
+    ports:
+      - '8000:80'
+    volumes:
+      - .:/var/www/html
+
