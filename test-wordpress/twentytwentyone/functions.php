@@ -654,3 +654,9 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+# Add script for Lastet Posts
+if (!class_exists('LastetPosts')) {
+	require_once(get_template_directory() .'/class-lastet-posts.php');
+	$run = new LastetPosts();
+}
